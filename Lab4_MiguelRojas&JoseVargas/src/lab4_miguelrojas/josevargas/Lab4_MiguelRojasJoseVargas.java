@@ -22,6 +22,7 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                 case 1:
                     boolean valid2 = true;
                     while(valid2){
+                        System.out.println("---------------------");
                         System.out.println("1] Agregar Equipo");
                         System.out.println("2] Modificar Equipo");
                         System.out.println("3] Eliminar Equipo");
@@ -50,6 +51,7 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                 case 2:
                     boolean valid3 = true;
                     while(valid3){
+                        System.out.println("---------------------");
                         System.out.println("1] Agregar Jugadores");
                         System.out.println("2] Modificar Jugadores");
                         System.out.println("3] Eliminar Jugadores");
@@ -59,17 +61,58 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                         int op_jugadores = entrada.nextInt();
                         switch(op_jugadores){
                             case 1:
+                                System.out.println("Ingrese la posicion del equipo que desea agregarlo: ");
+                                int pos_equipo = entrada.nextInt();
                                 System.out.println("Ingrese el nombre del jugador: ");
                                 String nombre = entrada.next();
+                                System.out.println("Ingrese el año que cursa en Hogwarts: ");
+                                String anio = entrada.next();
                                 System.out.println("Ingrese el numero del jugador: ");
                                 int numero = entrada.nextInt();
-                                System.out.println("Ingrese la posicion del jugador: \n"
-                                        + "1] Guardian\n"
-                                        + "2] Golpeador\n"
-                                        + "3] Cazador\n"
-                                        + "4] Buscador\n");
-                                int posicion = entrada.nextInt();
-                                
+                                boolean valid_pos = true;
+                                while(valid_pos){
+                                    System.out.println("Ingrese la posicion del jugador: \n"
+                                            + "1] Guardian\n"
+                                            + "2] Golpeador\n"
+                                            + "3] Cazador\n"
+                                            + "4] Buscador\n");
+                                    int posicion = entrada.nextInt();
+                                    switch(posicion){
+                                        case 1:
+                                            if(cont_gua<=1){
+                                                cont_gua++;
+                                                valid_pos = false;
+                                            }else{
+                                                System.out.println("Ya hay 1 Guardian en el equipo");
+                                            }
+                                            break;
+                                        case 2:
+                                            if(cont_golp<=2){
+                                                cont_golp++;
+                                                valid_pos = false;
+                                            }else{
+                                                System.out.println("Ya hay 2 Golpeadores en el equipo");
+                                            }
+                                            break;
+                                        case 3:
+                                            if(cont_caz<=3){
+                                                cont_caz++;
+                                                valid_pos = false;
+                                            }else{
+                                                System.out.println("Ya hay 3 Cazadores en el equipo");
+                                            }
+                                            break;
+                                        case 4:
+                                            if(cont_busc<=1){
+                                                cont_busc++;
+                                                valid_pos = false;
+                                            }else{
+                                                System.out.println("Ya hay 1 Buscador en el equipo");
+                                            }
+                                            break;
+                                    }
+                                }
+                                System.out.println();
                                 break;
                             case 2:
                                 break;
