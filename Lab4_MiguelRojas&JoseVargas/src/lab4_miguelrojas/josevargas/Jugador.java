@@ -2,15 +2,15 @@ package lab4_miguelrojas.josevargas;
 
 import java.util.ArrayList;
 
-public class Jugador{
-    
+public class Jugador {
+
     private String nombre;
     private int anio;
     private int num_uniforme;
     private String rol;
 
     public Jugador() {
-        
+
     }
 
     public Jugador(String nombre, int anio, int num_uniforme, String rol) {
@@ -56,6 +56,16 @@ public class Jugador{
     public String toString() {
         return "Jugador{" + "nombre=" + nombre + ", anio=" + anio + ", num_uniforme=" + num_uniforme + ", rol=" + rol + '}';
     }
+
+    public int velocidad() {
+        return 0;
+    }
+
+    public int agilidad() {
+        return 0;
+    }
     
-    
+    public int fuerza(){
+        return 0;
+    }
 }

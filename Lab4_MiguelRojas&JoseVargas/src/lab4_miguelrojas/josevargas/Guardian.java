@@ -2,34 +2,36 @@ package lab4_miguelrojas.josevargas;
 
 public class Guardian extends Jugador {
 
-    private int reflejo;
+    private int reflej;
 
     public Guardian() {
         super();
     }
 
 
-    public Guardian(int reflejo, String nombre, int anio, int num_uniforme, String rol) {
+    public Guardian(int reflej, String nombre, int anio, int num_uniforme, String rol) {
         super(nombre, anio, num_uniforme, rol);
-        this.reflejo = reflejo;
+        this.reflej = reflej;
     }
 
 
         
-    public int getReflejo() {
-        return reflejo;
+    public int getReflej() {
+        return reflej;
     }
 
-    public void setReflejo(int reflejo) {
-        this.reflejo = reflejo;
+    public void setReflej(int reflejo) {
+        this.reflej = reflejo;
     }
 
     @Override
     public String toString() {
-        return "Guardian{" + "reflejo=" + reflejo + '}';
+        return "Guardian{" + "reflejo=" + reflej + '}';
     }
     
     
-    
-
+    private int agilidad(int reflej){
+        int agilidad = reflej + 7;
+        return agilidad;
+    }
 }

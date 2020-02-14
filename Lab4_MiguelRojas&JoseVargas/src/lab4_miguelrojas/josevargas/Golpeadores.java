@@ -37,5 +37,16 @@ public class Golpeadores extends Jugador{
     }
     
     
+    public int fuerza(int musculatura){
+        int fuerza = (musculatura * 2) - 7;
+        return fuerza;
+                
+    }
+    
+    public int agilidad(int reflejos){
+        int agilidad = reflejos + 7;
+        return agilidad;
+        
+    }
     
 }

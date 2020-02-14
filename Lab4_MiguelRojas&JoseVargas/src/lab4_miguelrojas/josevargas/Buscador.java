@@ -26,6 +26,8 @@ public class Buscador extends Jugador{
         return "Buscador{" + "peso=" + peso + '}';
     }
     
-    
-    
+    public int velocidad(int peso){
+        int velocity = (200/this.peso) * 7;
+        return velocity;
+    }   
 }
