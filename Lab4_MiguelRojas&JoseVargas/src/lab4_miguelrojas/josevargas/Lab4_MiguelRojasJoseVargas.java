@@ -5,12 +5,17 @@ import java.util.Scanner;
 
 public class Lab4_MiguelRojasJoseVargas {
 
+
     static Scanner entrada = new Scanner(System.in);
     static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar maximo de jugadores por posicion
     static int pos_equipo = 0;
 
+
     public static void main(String[] args) {
         boolean valid = true;
+        int pos_equipo = 0;
+        ArrayList<Equipo> equipos = new ArrayList();
+        equipos.add(new Equipo());
         while (valid) {
             System.out.println("----Quidditch----");
             System.out.println("1] CRUD Equipo");
@@ -19,7 +24,6 @@ public class Lab4_MiguelRojasJoseVargas {
             System.out.println("4] Salir del Juego");
             System.out.println("Ingrese una opcion: ");
             int opcion = entrada.nextInt();
-            ArrayList<Equipo> equipos = new ArrayList();
             switch (opcion) {
                 case 1:
                     boolean valid2 = true;
@@ -61,9 +65,19 @@ public class Lab4_MiguelRojasJoseVargas {
                                 System.out.println();
                                 break;
                             case 2:
+                                for (int i = 0; i < equipos.size(); i++) {
+                                    System.out.println("Equipo[" + i + "]" + equipos.get(i));
+                                }
                                 System.out.println();
                                 break;
                             case 3:
+                                for (int i = 0; i < equipos.size(); i++) {
+                                    System.out.println("Equipo[" + i + "]" + equipos.get(i));
+                                }
+                                System.out.println("Ingrese el equipo que desea eliminar: ");
+                                int eliminar = entrada.nextInt();
+                                equipos.remove(eliminar);
+                                System.out.println("Equipo Eliminado con Exito");
                                 System.out.println();
                                 break;
                             case 4:
@@ -91,60 +105,68 @@ public class Lab4_MiguelRojasJoseVargas {
                         int op_jugadores = entrada.nextInt();
                         switch (op_jugadores) {
                             case 1:
-                                System.out.println("Ingrese la posicion del equipo que desea agregarlo: ");
-                                pos_equipo = entrada.nextInt();
-                                System.out.println("Ingrese el nombre del jugador: ");
-                                String nombre = entrada.next();
-                                System.out.println("Ingrese el año que cursa en Hogwarts: ");
-                                int anio = entrada.nextInt();
-                                System.out.println("Ingrese el numero del jugador: ");
-                                int num_uniforme = entrada.nextInt();
-                                boolean valid_pos = true;
-                                while (valid_pos) {
-                                    System.out.println("Ingrese la posicion del jugador: \n"
-                                            + "1] Guardian\n"
-                                            + "2] Golpeador\n"
-                                            + "3] Cazador\n"
-                                            + "4] Buscador\n");
-                                    int posicion = entrada.nextInt();
-                                    switch (posicion) {
-                                        case 1:
-                                            if (cont_gua <= 1) {
-                                                cont_gua++;
-                                                equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Guardian"));
-                                                valid_pos = false;
-                                            } else {
+                                if (equipos.isEmpty()) {
+                                    System.out.println("No hay equipos disponibles");
+                                }else{
+                                    System.out.println("Ingrese la posicion del equipo que desea agregarlo: ");
+                                    pos_equipo = entrada.nextInt();
+                                    System.out.println("Ingrese el nombre del jugador: ");
+                                    String nombre = entrada.next();
+                                    System.out.println("Ingrese el año que cursa en Hogwarts: ");
+                                    int anio = entrada.nextInt();
+                                    System.out.println("Ingrese el numero del jugador: ");
+                                    int num_uniforme = entrada.nextInt();
+                                    boolean valid_pos = true;
+                                    while (valid_pos) {
+                                        System.out.println("Ingrese la posicion del jugador: \n"
+                                                + "1] Guardian\n"
+                                                + "2] Golpeador\n"
+                                                + "3] Cazador\n"
+                                                + "4] Buscador");
+                                        int posicion = entrada.nextInt();
+                                        switch (posicion) {
+                                            case 1:
+                                                if (cont_gua <= 1) {
+                                                    cont_gua++;
+                                                    equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Guardian"));
+                                                    System.out.println("Jugador Agregado Con Exito");
+                                                    valid_pos = false;
+                                                } else {
 
-                                                System.out.println("Ya hay 1 Guardian en el equipo");
-                                            }
-                                            break;
-                                        case 2:
-                                            if (cont_golp <= 2) {
-                                                cont_golp++;
-                                                equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Golpeadores"));
-                                                valid_pos = false;
-                                            } else {
-                                                System.out.println("Ya hay 2 Golpeadores en el equipo");
-                                            }
-                                            break;
-                                        case 3:
-                                            if (cont_caz <= 3) {
-                                                cont_caz++;
-                                                equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Cazador"));
-                                                valid_pos = false;
-                                            } else {
-                                                System.out.println("Ya hay 3 Cazadores en el equipo");
-                                            }
-                                            break;
-                                        case 4:
-                                            if (cont_busc <= 1) {
-                                                cont_busc++;
-                                                equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Buscador"));
-                                                valid_pos = false;
-                                            } else {
-                                                System.out.println("Ya hay 1 Buscador en el equipo");
-                                            }
-                                            break;
+                                                    System.out.println("Ya hay 1 Guardian en el equipo");
+                                                }
+                                                break;
+                                            case 2:
+                                                if (cont_golp <= 2) {
+                                                    cont_golp++;
+                                                    equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Golpeadores"));
+                                                    System.out.println("Jugador Agregado Con Exito");
+                                                    valid_pos = false;
+                                                } else {
+                                                    System.out.println("Ya hay 2 Golpeadores en el equipo");
+                                                }
+                                                break;
+                                            case 3:
+                                                if (cont_caz <= 3) {
+                                                    cont_caz++;
+                                                    equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Cazador"));
+                                                    System.out.println("Jugador Agregado Con Exito");
+                                                    valid_pos = false;
+                                                } else {
+                                                    System.out.println("Ya hay 3 Cazadores en el equipo");
+                                                }
+                                                break;
+                                            case 4:
+                                                if (cont_busc <= 1) {
+                                                    cont_busc++;
+                                                    equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Buscador"));
+                                                    System.out.println("Jugador Agregado Con Exito");
+                                                    valid_pos = false;
+                                                } else {
+                                                    System.out.println("Ya hay 1 Buscador en el equipo");
+                                                }
+                                                break;
+                                        }
                                     }
                                 }
                                 System.out.println();
@@ -154,6 +176,14 @@ public class Lab4_MiguelRojasJoseVargas {
                             case 3:
                                 break;
                             case 4:
+                                if (equipos.isEmpty()) {
+                                    System.out.println("No hay equipos disponibles");
+                                } else {
+                                }
+                                for (int i = 0; i < equipos.size(); i++) {
+                                    System.out.println("Jugadores Equipo[" + i + "] = " + equipos.get(i).jugadores);
+                                }
+                                    
                                 break;
                             case 5:
                                 valid3 = false;

@@ -54,7 +54,7 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return "Nombre = " + nombre + " | Año = " + anio + " | Numero = " + num_uniforme + " | Rol=" + rol ;
+        return "Nombre = " + nombre + " | Año = " + anio + " | Numero = " + num_uniforme + " | Rol=" + rol;
     }
 
     public int velocidad() {
