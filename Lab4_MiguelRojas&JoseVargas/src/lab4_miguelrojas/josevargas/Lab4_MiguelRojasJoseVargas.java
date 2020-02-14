@@ -132,7 +132,9 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                     System.out.println("");
                     System.exit(opcion);
                     break;
-            }
+                default:
+                    System.out.println("Ingrese una opción valida");
+            }       
         }
     }
     
