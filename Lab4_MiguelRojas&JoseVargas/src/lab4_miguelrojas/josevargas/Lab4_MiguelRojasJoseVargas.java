@@ -5,12 +5,11 @@ import java.util.Scanner;
 
 public class Lab4_MiguelRojasJoseVargas {
 
-static Scanner entrada = new Scanner(System.in);
-static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar maximo de jugadores por posicion
-static int pos_equipo = 0;
+    static Scanner entrada = new Scanner(System.in);
+    static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar maximo de jugadores por posicion
+    static int pos_equipo = 0;
 
-
-public static void main(String[] args) {
+    public static void main(String[] args) {
         boolean valid = true;
         while (valid) {
             System.out.println("----Quidditch----");
@@ -175,7 +174,7 @@ public static void main(String[] args) {
     }
 
     public static void validarCasa(String casa) throws myException {
-        
+
         if (casa.equals("Gryffindor")) {
             //nada
         } else if (casa.equals("Slytherin")) {
@@ -186,7 +185,25 @@ public static void main(String[] args) {
             //nada
         } else {
             throw new myException("La casa no es valida");
-            
+
+        }
+    }
+
+    public static void simulacion() {
+
+        int turno = 1;
+        boolean fin = true;
+        while (fin) {
+            if (turno % 2 != 0) {
+                System.out.println("Turno de Humano");
+                
+                turno++;
+            } else {
+                System.out.println("Turno de CPU");
+
+                turno++;
+            }
+
         }
     }
 }

@@ -3,7 +3,7 @@ package lab4_miguelrojas.josevargas;
 import java.util.ArrayList;
 
 public class Equipo {
-    
+
     private String casa;
     private int partidos_win;
     private int partidos_lost;
@@ -84,6 +84,5 @@ public class Equipo {
     public String toString() {
         return " Casa = " + casa + " | Partidos Ganados = " + partidos_win + " | Partidos Perdidos = " + partidos_lost + " | PromedioAgilidad = " + prom_agilidad + " | PromedioVelocidad=" + prom_velocidad + " | PromedioFuerza = " + prom_fuerza + " | Jugadores=" + jugadores + '}';
     }
-    
-    
+
 }
