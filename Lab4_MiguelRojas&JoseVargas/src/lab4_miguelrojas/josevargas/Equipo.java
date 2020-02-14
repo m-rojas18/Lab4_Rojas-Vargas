@@ -6,7 +6,7 @@ public class Equipo {
     
     private String casa;
     private int partidos_win;
-    private int paridos_lost;
+    private int partidos_lost;
     private int prom_agilidad;
     private int prom_velocidad;
     private int prom_fuerza;
@@ -18,7 +18,7 @@ public class Equipo {
     public Equipo(String casa, int partidos_win, int paridos_lost, int prom_agilidad, int prom_velocidad, int prom_fuerza) {
         this.casa = casa;
         this.partidos_win = partidos_win;
-        this.paridos_lost = paridos_lost;
+        this.partidos_lost = paridos_lost;
         this.prom_agilidad = prom_agilidad;
         this.prom_velocidad = prom_velocidad;
         this.prom_fuerza = prom_fuerza;
@@ -41,11 +41,11 @@ public class Equipo {
     }
 
     public int getParidos_lost() {
-        return paridos_lost;
+        return partidos_lost;
     }
 
     public void setParidos_lost(int paridos_lost) {
-        this.paridos_lost = paridos_lost;
+        this.partidos_lost = paridos_lost;
     }
 
     public int getProm_agilidad() {
@@ -82,7 +82,7 @@ public class Equipo {
 
     @Override
     public String toString() {
-        return "Equipo{" + "casa=" + casa + ", partidos_win=" + partidos_win + ", paridos_lost=" + paridos_lost + ", prom_agilidad=" + prom_agilidad + ", prom_velocidad=" + prom_velocidad + ", prom_fuerza=" + prom_fuerza + ", jugadores=" + jugadores + '}';
+        return " Casa = " + casa + " | Partidos Ganados = " + partidos_win + " | Partidos Perdidos = " + partidos_lost + " | PromedioAgilidad = " + prom_agilidad + " | PromedioVelocidad=" + prom_velocidad + " | PromedioFuerza = " + prom_fuerza + " | Jugadores=" + jugadores + '}';
     }
     
     
