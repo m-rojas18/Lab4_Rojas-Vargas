@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Lab4_MiguelRojasJoseVargas {
 static Scanner entrada = new Scanner(System.in);
 static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar maximo de jugadores por posicion
+static int pos_equipo = 0;
 
     public static void main(String[] args) {
         boolean valid = true;
@@ -82,13 +83,13 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                         switch(op_jugadores){
                             case 1:
                                 System.out.println("Ingrese la posicion del equipo que desea agregarlo: ");
-                                int pos_equipo = entrada.nextInt();
+                                pos_equipo = entrada.nextInt();
                                 System.out.println("Ingrese el nombre del jugador: ");
                                 String nombre = entrada.next();
                                 System.out.println("Ingrese el año que cursa en Hogwarts: ");
-                                String anio = entrada.next();
+                                int anio = entrada.nextInt();
                                 System.out.println("Ingrese el numero del jugador: ");
-                                int numero = entrada.nextInt();
+                                int num_uniforme = entrada.nextInt();
                                 boolean valid_pos = true;
                                 while(valid_pos){
                                     System.out.println("Ingrese la posicion del jugador: \n"
@@ -101,7 +102,9 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                                         case 1:
                                             if(cont_gua<=1){
                                                 cont_gua++;
+                                                equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Guardian"));
                                                 valid_pos = false;
+                                                
                                             }else{
                                                 System.out.println("Ya hay 1 Guardian en el equipo");
                                             }
@@ -109,6 +112,7 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                                         case 2:
                                             if(cont_golp<=2){
                                                 cont_golp++;
+                                                equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Golpeadores"));
                                                 valid_pos = false;
                                             }else{
                                                 System.out.println("Ya hay 2 Golpeadores en el equipo");
@@ -117,6 +121,7 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                                         case 3:
                                             if(cont_caz<=3){
                                                 cont_caz++;
+                                                equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Cazador"));
                                                 valid_pos = false;
                                             }else{
                                                 System.out.println("Ya hay 3 Cazadores en el equipo");
@@ -125,6 +130,7 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                                         case 4:
                                             if(cont_busc<=1){
                                                 cont_busc++;
+                                                equipos.get(pos_equipo).getJugadores().add(new Jugador(nombre, anio, num_uniforme, "Buscador"));
                                                 valid_pos = false;
                                             }else{
                                                 System.out.println("Ya hay 1 Buscador en el equipo");
@@ -149,8 +155,8 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                     System.out.println("");
                     break;
                 case 4:
-                    System.out.println("");
-                    System.exit(opcion);
+                    System.out.println("Gracias por jugar!");
+                    System.exit(0);
                     break;
             }
         }
