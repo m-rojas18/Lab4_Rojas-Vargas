@@ -1,6 +1,7 @@
 
 package lab4_miguelrojas.josevargas;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -18,6 +19,7 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
             System.out.println("4] Salir del Juego");
             System.out.println("Ingrese una opcion: ");
             int opcion = entrada.nextInt();
+            ArrayList<Equipo> equipos = new ArrayList();
             switch(opcion){
                 case 1:
                     boolean valid2 = true;
@@ -34,17 +36,35 @@ static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar m
                             case 1:
                                 System.out.println("Ingrese la casa de su equipo: ");
                                 String casa = entrada.next();
+                                System.out.println("Ingrese la cantidad de partidos ganados: ");
+                                int partidos_win = entrada.nextInt();
+                                System.out.println("Ingrese la cantidad de partidos perdidos: ");
+                                int partidos_lost = entrada.nextInt();
+                                System.out.println("Ingrese el promedio de agilidad: ");
+                                int prom_agilidad = entrada.nextInt();
+                                System.out.println("Ingrese el promedio de velocidad: ");
+                                int prom_velocidad = entrada.nextInt();
+                                System.out.println("Ingrese el promedio de fuerza: ");
+                                int prom_fuerza = entrada.nextInt();
                                 System.out.println("Equipo agregado con exito!");
+                                equipos.add(new Equipo(casa, partidos_win, partidos_lost, prom_agilidad, prom_velocidad, prom_fuerza));
                                 System.out.println();
                                 break;
                             case 2:
+                                System.out.println();
                                 break;
                             case 3:
+                                System.out.println();
                                 break;
                             case 4:
+                                for (int i = 0; i < equipos.size(); i++) {
+                                    System.out.println("Equipo["+i + "]" + equipos.get(i));
+                                }
+                                System.out.println();
                                 break;
                             case 5:
                                 valid2 = false;
+                                break;
                         }
                     }
                     break;
