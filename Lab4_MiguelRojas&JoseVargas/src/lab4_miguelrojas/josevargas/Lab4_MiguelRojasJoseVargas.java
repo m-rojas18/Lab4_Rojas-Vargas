@@ -21,7 +21,6 @@ public class Lab4_MiguelRojasJoseVargas {
         //equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
         //equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65));
         //equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
-
         while (valid) {
             System.out.println("----Quidditch----");
             System.out.println("1] CRUD Equipo");
@@ -521,7 +520,7 @@ public class Lab4_MiguelRojasJoseVargas {
                                     }
 
                                 }
-                                
+
                                 if (golpeador_random >= 0 && golpeador_random < 22) {
                                     //Incremento a Agilidad y Fuerza de Golpeador 1
                                     ((Golpeadores) equipos.get(pos_team).jugadores.get(jug_trampa)).setReflejos(10 + ((Golpeadores) equipos.get(pos_team).jugadores.get(jug_trampa)).getReflejos());
@@ -542,7 +541,53 @@ public class Lab4_MiguelRojasJoseVargas {
 
                             } else if (equipos.get(pos_team).jugadores.get(jug_trampa).getRol() == "Cazador") {
 
+                                int cazador_chance = r.nextInt(6) + 0;
+                                int cazador2 = r.nextInt(6) + 0;
+                                int cazador3 = r.nextInt(6) + 0;
+                                while (equipos.get(pos_team).jugadores.get(cazador2).getRol() != "Cazador") {
+                                    if (cazador2 == jug_trampa) {
+                                        cazador2 = r.nextInt(6) + 0;
+                                    } else {
+                                        cazador2 = r.nextInt(6) + 0;
+                                    }
+                                }
+
+                                while (equipos.get(pos_team).jugadores.get(cazador3).getRol() != "Cazador") {
+
+                                    if (cazador3 == jug_trampa) {
+                                        cazador3 = r.nextInt(6) + 0;
+                                    } else if (cazador3 == cazador2) {
+                                        cazador3 = r.nextInt(6) + 0;
+                                    } else {
+                                        cazador3 = r.nextInt(6) + 0;
+                                    }
+                                }
+
+                                if (cazador_chance >= 0 && cazador_chance <= 10) {
+                                    //Incremento a Agilidad y Velocidad de Cazadores
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(jug_trampa)).setReflex(8 + ((Cazadores) equipos.get(pos_team).jugadores.get(jug_trampa)).getReflex());
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(jug_trampa)).setPeso(5 + ((Cazadores) equipos.get(pos_team).jugadores.get(jug_trampa)).getPeso());
+                                    //Cazador 2
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(cazador2)).setReflex(8 + ((Cazadores) equipos.get(pos_team).jugadores.get(cazador2)).getReflex());
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(cazador2)).setPeso(5 + ((Cazadores) equipos.get(pos_team).jugadores.get(cazador2)).getPeso());
+                                    //Cazador 3
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(cazador3)).setReflex(8 + ((Cazadores) equipos.get(pos_team).jugadores.get(cazador3)).getReflex());
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(cazador3)).setPeso(5 + ((Cazadores) equipos.get(pos_team).jugadores.get(cazador3)).getPeso());
+                                    System.out.println("Se ha incrementado la Velocidad y Agilidad de los Cazadores del equipo: " + equipos.get(pos_team).getCasa() + "por magia");
+                                } else {
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(jug_trampa)).setReflex(((Cazadores) equipos.get(pos_team).jugadores.get(jug_trampa)).getReflex() - 3);
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(cazador2)).setReflex(((Cazadores) equipos.get(pos_team).jugadores.get(cazador2)).getReflex() - 3);
+                                    ((Cazadores) equipos.get(pos_team).jugadores.get(cazador3)).setReflex(((Cazadores) equipos.get(pos_team).jugadores.get(cazador3)).getReflex() - 3);
+                                    System.out.println("Se ha idecrementado la Velocidad  de los Cazadores del equipo: " + equipos.get(pos_team).getCasa() + "por trampa");
+                                }
                             } else if (equipos.get(pos_team).jugadores.get(jugador).getRol() == "Guardian") {
+                                int guardian_chance = r.nextInt(100) + 0;
+
+                                if (guardian_chance >= 0 && guardian_chance < 100) {
+                                    System.out.println("El Equipo Contrario no puede anotar gol por 2 Turnos");
+                                } else {
+                                    System.out.println("El Guardian:" + equipos.get(pos_team).jugadores.get(jug_trampa).getNombre() + " No puede tapar nada por 2 turnos ");
+                                }
 
                             } else {
                                 //Do nothing
@@ -566,6 +611,220 @@ public class Lab4_MiguelRojasJoseVargas {
                 } else {
                     System.out.println("Turno de CPU");
 
+                    int jugador_random = r.nextInt(6) + 0;
+                    int opcion_turno = r.nextInt(1) + 1;
+                    if (opcion_turno == 1) {
+                        //Modo de Juego
+                        //Accion de Guardian
+                        if (equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() == "Guardian") {
+
+                            int pos_random = 0 + r.nextInt(6);
+
+                            while (equipos.get(pos_teamCPU).jugadores.get(pos_random).getRol() != "Cazador") {
+                                pos_random = 0 + r.nextInt(6);
+                            }
+                            int refl_guardian = ((Guardian) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getReflej();
+                            int tapar = ((Guardian) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).agilidad(refl_guardian);
+                            int peso_hum = ((Cazadores) equipos.get(pos_team).jugadores.get(pos_random)).getPeso();
+                            int velocidadhum = ((Cazadores) equipos.get(pos_team).jugadores.get(pos_random)).velocidad(peso_hum);
+                            if (tapar > velocidadhum) {
+                                //Tapo
+                                System.out.println("---------------------");
+                                System.out.println(equipos.get(pos_teamCPU).jugadores.get(jugador_random).getNombre()
+                                        + "(" + equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() + " - "
+                                        + equipos.get(pos_teamCPU).getCasa() + ") intento tapar un gol: Exitosamente");
+                                //Sumar 8 a Agilidad
+                                ((Guardian) equipos.get(pos_team).jugadores.get(jugador_random)).setReflej(((Guardian) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getReflej() + 8);
+                            } else {
+                                //Fallo
+                                System.out.println("---------------------");
+                                System.out.println(equipos.get(pos_teamCPU).jugadores.get(jugador_random).getNombre()
+                                        + "(" + equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() + " - "
+                                        + equipos.get(pos_teamCPU).getCasa() + ") Fallo en tapar un gol");
+                                //System.out.println("10 Puntos para: " + equipos.get(pos_teamCPU).getCasa());
+                            }
+                            //Accion Golpeador
+                        } else if (equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() == "Golpeador") {
+                            int opcion_Golpeador = r.nextInt(1) + 1;
+                            int opcion_golp = entrada.nextInt();
+                            if (opcion_Golpeador == 1) {
+                                int musculatora_hum = ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getMusculatura();
+                                int fuerza_compu = ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).fuerza(musculatora_hum);
+
+                                int golpCPU1 = r.nextInt(6) + 0;
+                                //Conseguir Golpeadores de el equipo Humano
+                                while (equipos.get(pos_team).jugadores.get(golpCPU1).getRol() != "Golpeador") {
+                                    golpCPU1 = r.nextInt(6) + 0;
+                                }
+
+                                int golpCPU2 = r.nextInt(7) + 0;
+                                while (equipos.get(pos_team).jugadores.get(golpCPU1).getRol() != "Golpeador") {
+                                    if (golpCPU2 == golpCPU1) {
+                                        golpCPU2 = r.nextInt(6) + 0;
+                                    } else {
+                                        golpCPU2 = r.nextInt(6) + 0;
+                                    }
+                                }
+                                //Conseguir Valor de Musculatura de Golpeadores Humano
+                                int musculaturaCPU1 = ((Golpeadores) equipos.get(pos_team).jugadores.get(golpCPU1)).getMusculatura();
+                                int musculaturaCPU2 = ((Golpeadores) equipos.get(pos_team).jugadores.get(golpCPU2)).getMusculatura();
+                                //Conseguir Fuerza de Golpeadores Humano
+                                int fuerzaCPU1 = ((Golpeadores) equipos.get(pos_team).jugadores.get(golpCPU1)).fuerza(musculaturaCPU1);
+                                int fuerzaCPU2 = ((Golpeadores) equipos.get(pos_team).jugadores.get(golpCPU2)).fuerza(musculaturaCPU2);
+
+                                int suma_Fuerza = fuerzaCPU1 + fuerzaCPU2;
+                                if (fuerza_compu * 2 + 1 > suma_Fuerza) {
+                                    System.out.println("---------------------");
+                                    System.out.println(equipos.get(pos_teamCPU).jugadores.get(jugador_random).getNombre()
+                                            + "(" + equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() + " - "
+                                            + equipos.get(pos_teamCPU).getCasa() + ") Golpeo a un oponente: Exitosamente");
+                                } else {
+                                    System.out.println("---------------------");
+                                    System.out.println(equipos.get(pos_teamCPU).jugadores.get(jugador_random).getNombre()
+                                            + "(" + equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() + " - "
+                                            + equipos.get(pos_teamCPU).getCasa() + ") Fallo en golpear a un oponente");
+                                }
+                            } else {
+                                //Caso Defender Golpeador
+                                //Agilidad de Compu
+                                int reflejo_hum = ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getReflejos();
+                                int agilidad_hum = ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).agilidad(reflejo_hum);
+
+                                int golpeador_CPU1 = r.nextInt(6) + 0;
+                                //Conseguir Golpeadores de el Humano
+                                while (!"Golpeador".equals(equipos.get(pos_team).jugadores.get(golpeador_CPU1).getRol())) {
+                                    golpeador_CPU1 = r.nextInt(6) + 0;
+                                }
+
+                                int reflejo_CPU = ((Golpeadores) equipos.get(pos_team).jugadores.get(golpeador_CPU1)).getReflejos();
+                                int agilidad_CPU = ((Golpeadores) equipos.get(pos_team).jugadores.get(golpeador_CPU1)).agilidad(reflejo_CPU);
+
+                                if ((agilidad_hum / 2) + 7 > agilidad_CPU) {
+                                    System.out.println("---------------------");
+                                    System.out.println(equipos.get(pos_teamCPU).jugadores.get(jugador_random).getNombre()
+                                            + "(" + equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() + " - "
+                                            + equipos.get(pos_teamCPU).getCasa() + ") Defendio a un Compañero");
+                                    ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).setReflejos(reflejo_hum + 10);
+
+                                } else {
+                                    System.out.println("---------------------");
+                                    System.out.println(equipos.get(pos_teamCPU).jugadores.get(jugador_random).getNombre()
+                                            + "(" + equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() + " - "
+                                            + equipos.get(pos_teamCPU).getCasa() + ") No logro Defender a un Compañero");
+                                }
+
+                            }
+
+                        }
+
+                    } else {
+                        //Trampa
+                        if (equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() == "Buscador") {
+                            //Trampa Buscador
+                            int win_chance = r.nextInt(100) + 0;
+                            if (win_chance >= 0 && win_chance <= 5) {
+                                System.out.println("---------------------");
+                                System.out.println(equipos.get(pos_teamCPU).jugadores.get(jugador_random).getNombre()
+                                        + "(" + equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() + " - "
+                                        + equipos.get(pos_teamCPU).getCasa() + ") Atrapo La Snitch Dorada Con su Varita");
+                                System.out.println("La casa " + equipos.get(pos_teamCPU).getCasa() + "Ha Ganado por  150 Puntos");
+                                fin = false;
+                            } else {
+                                System.out.println("La casa " + equipos.get(pos_teamCPU).getCasa() + "Ha sido Descalificada por Trampa");
+                                System.out.println("Gana el equipo de la casa: " + equipos.get(pos_team).getCasa());
+                                fin = false;
+                            }
+                        } else if (equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() == "Golpeador") {
+                            //Trampa Golpeador
+                            int golpeador_random = r.nextInt(100) + 0;
+                            //Conseguir Segundo Golpeador
+                            int segundo_golpeador = r.nextInt(6) + 0;
+                            while (equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador).getRol() != "Golpeador") {
+                                if (segundo_golpeador == golpeador_random) {
+                                    segundo_golpeador = r.nextInt(6) + 0;
+                                } else {
+                                    segundo_golpeador = r.nextInt(6) + 0;
+                                }
+
+                            }
+                            if (golpeador_random >= 0 && golpeador_random < 22) {
+                                //Incremento a Agilidad y Fuerza de Golpeador 1
+                                ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).setReflejos(10 + ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getReflejos());
+                                ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).setMusculatura(10 + ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getMusculatura());
+                                //Incremento a Agilidad y Fuerza de Golpeador 2
+                                ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador)).setReflejos(10 + ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador)).getReflejos());
+                                ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador)).setMusculatura(10 + ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador)).getMusculatura());
+                                System.out.println("Se ha incrementado La Velocidad y Agilidad de los Golpeadores del equipo: " + equipos.get(pos_teamCPU).getCasa());
+                            } else {
+                                //Decremento a Agilidad y Fuerza de Golpeador 1
+                                ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).setReflejos(((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getReflejos() - 15);
+                                ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).setMusculatura(((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getMusculatura() - 10);
+                                //Decremento a Agilidad y Fuerza de Golpeador 2
+                                ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador)).setReflejos(((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador)).getReflejos() - 15);
+                                ((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador)).setMusculatura(((Golpeadores) equipos.get(pos_teamCPU).jugadores.get(segundo_golpeador)).getMusculatura() - 10);
+                                System.out.println("Se ha Decrementado La Velocidad y Agilidad de los Golpeadores del equipo: " + equipos.get(pos_teamCPU).getCasa() + "Por Trampa");
+                            }
+                        } else if (equipos.get(pos_teamCPU).jugadores.get(jugador_random).getRol() == "Cazador") {
+
+                            int cazador_chance = r.nextInt(6) + 0;
+                            int cazador2 = r.nextInt(6) + 0;
+                            int cazador3 = r.nextInt(6) + 0;
+                            while (equipos.get(pos_teamCPU).jugadores.get(cazador2).getRol() != "Cazador") {
+                                if (cazador2 == jugador_random) {
+                                    cazador2 = r.nextInt(6) + 0;
+                                } else {
+                                    cazador2 = r.nextInt(6) + 0;
+                                }
+                            }
+
+                            while (equipos.get(pos_teamCPU).jugadores.get(cazador3).getRol() != "Cazador") {
+
+                                if (cazador3 == jugador_random) {
+                                    cazador3 = r.nextInt(6) + 0;
+                                } else if (cazador3 == cazador2) {
+                                    cazador3 = r.nextInt(6) + 0;
+                                } else {
+                                    cazador3 = r.nextInt(6) + 0;
+                                }
+                            }
+
+                            if (cazador_chance >= 0 && cazador_chance <= 10) {
+                                //Incremento a Agilidad y Velocidad de Cazadores
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).setReflex(8 + ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getReflex());
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).setPeso(5 + ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getPeso());
+                                //Cazador 2
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador2)).setReflex(8 + ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador2)).getReflex());
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador2)).setPeso(5 + ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador2)).getPeso());
+                                //Cazador 3
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador3)).setReflex(8 + ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador3)).getReflex());
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador3)).setPeso(5 + ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador3)).getPeso());
+                                System.out.println("Se ha incrementado la Velocidad y Agilidad de los Cazadores del equipo: " + equipos.get(pos_teamCPU).getCasa() + "por magia");
+                            } else {
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).setReflex(((Cazadores) equipos.get(pos_teamCPU).jugadores.get(jugador_random)).getReflex() - 3);
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador2)).setReflex(((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador2)).getReflex() - 3);
+                                ((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador3)).setReflex(((Cazadores) equipos.get(pos_teamCPU).jugadores.get(cazador3)).getReflex() - 3);
+                                System.out.println("Se ha idecrementado la Velocidad  de los Cazadores del equipo: " + equipos.get(pos_teamCPU).getCasa() + "por trampa");
+                            }
+                        } else if (equipos.get(pos_team).jugadores.get(jugador_random).getRol() == "Guardian") {
+                            int guardian_chance = r.nextInt(100) + 0;
+
+                            if (guardian_chance >= 0 && guardian_chance < 100) {
+                                System.out.println("El Equipo Contrario no puede anotar gol por 2 Turnos");
+                            } else {
+                                System.out.println("El Guardian:" + equipos.get(pos_teamCPU).jugadores.get(jugador_random).getNombre() + " No puede tapar nada por 2 turnos ");
+                            }
+
+                        } else {
+                            //Do nothing
+                        }
+
+                    }
+                    //Agregar velocidad al Buscador
+                    jugador_random = r.nextInt(7) + 0;
+                    while (equipos.get(pos_team).jugadores.get(jugador_random).getRol() != "Buscador") {
+                        jugador_random = r.nextInt(7) + 0;
+                    }
+                    ((Buscador) equipos.get(pos_team).jugadores.get(jugador_random)).setPeso(10 + ((Buscador) equipos.get(pos_team).jugadores.get(jugador_random)).getPeso());
                     turno++;
                 }
 
