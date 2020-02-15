@@ -15,11 +15,13 @@ public class Lab4_MiguelRojasJoseVargas {
     public static void main(String[] args) {
         boolean valid = true;
         int pos_equipo = 0;
-
-        equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65));
-        equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
-
         equipos.add(new Equipo());
+
+        //equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65));
+        //equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
+        //equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65));
+        //equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
+
         while (valid) {
             System.out.println("----Quidditch----");
             System.out.println("1] CRUD Equipo");
@@ -147,7 +149,6 @@ public class Lab4_MiguelRojasJoseVargas {
                                                         System.out.println("Jugador Agregado Con Exito");
                                                         valid_pos = false;
                                                     } else {
-
                                                         System.out.println("Ya hay 1 Guardian en el equipo");
                                                     }
                                                     break;
