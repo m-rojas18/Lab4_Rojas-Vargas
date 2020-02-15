@@ -68,4 +68,6 @@ public class Jugador {
     public int fuerza(){
         return 0;
     }
+
+
 }

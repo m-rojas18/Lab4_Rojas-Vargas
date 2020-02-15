@@ -30,8 +30,9 @@ public class Guardian extends Jugador {
     }
     
     
-    private int agilidad(int reflej){
+    public int agilidad(int reflej){
         int agilidad = reflej + 7;
         return agilidad;
     }
+    
 }
