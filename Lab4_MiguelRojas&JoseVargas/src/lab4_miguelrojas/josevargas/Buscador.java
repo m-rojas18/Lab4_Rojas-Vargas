@@ -21,9 +21,9 @@ public class Buscador extends Jugador{
         this.peso = peso;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "Buscador{" + "peso=" + peso + '}';
+        return "Nombre = " + nombre + " | Año = " + anio + " | Numero = " + num_uniforme + " | Rol=" + rol;
     }
     
     public int velocidad(int peso){

@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class Jugador {
 
-    private String nombre;
-    private int anio;
-    private int num_uniforme;
-    private String rol;
+    protected String nombre;
+    protected int anio;
+    protected int num_uniforme;
+    protected String rol;
+    
 
     public Jugador() {
 

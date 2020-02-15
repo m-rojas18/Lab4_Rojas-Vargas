@@ -8,6 +8,15 @@ public class Cazadores extends Jugador{
     public Cazadores() {
     }
 
+
+    public Cazadores(int peso, int reflex, String nombre, int anio, int num_uniforme, String rol) {
+        super(nombre, anio, num_uniforme, rol);
+        this.peso = peso;
+        this.reflex = reflex;
+    }
+    
+    
+
     public int getPeso() {
         return peso;
     }
@@ -23,10 +32,11 @@ public class Cazadores extends Jugador{
     public void setReflex(int reflex) {
         this.reflex = reflex;
     }
-
-    @Override
+    
+    
+     @Override
     public String toString() {
-        return "Cazadores{" + "peso=" + peso + ", reflex=" + reflex + '}';
+        return "Nombre = " + nombre + " | Año = " + anio + " | Numero = " + num_uniforme + " | Rol=" + rol;
     }
     
     public int velocidad(int peso){

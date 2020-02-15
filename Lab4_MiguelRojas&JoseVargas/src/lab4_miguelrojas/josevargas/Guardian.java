@@ -24,9 +24,9 @@ public class Guardian extends Jugador {
         this.reflej = reflejo;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "Guardian{" + "reflejo=" + reflej + '}';
+        return "Nombre = " + nombre + " | Año = " + anio + " | Numero = " + num_uniforme + " | Rol=" + rol;
     }
     
     

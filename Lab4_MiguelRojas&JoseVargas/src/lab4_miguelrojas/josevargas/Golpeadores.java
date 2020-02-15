@@ -31,9 +31,9 @@ public class Golpeadores extends Jugador{
         this.musculatura = musculatura;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "Golpeadores{" + "reflejos=" + reflejos + ", musculatura=" + musculatura + '}';
+        return "Nombre = " + nombre + " | Año = " + anio + " | Numero = " + num_uniforme + " | Rol=" + rol;
     }
     
     
