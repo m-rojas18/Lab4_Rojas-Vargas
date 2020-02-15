@@ -1,20 +1,20 @@
 package lab4_miguelrojas.josevargas;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Lab4_MiguelRojasJoseVargas {
 
-
     static Scanner entrada = new Scanner(System.in);
     static int cont_gua, cont_golp, cont_caz, cont_busc; //Contador para controlar maximo de jugadores por posicion
     static int pos_equipo = 0;
-
+    static ArrayList<Equipo> equipos = new ArrayList();
 
     public static void main(String[] args) {
         boolean valid = true;
         int pos_equipo = 0;
-        ArrayList<Equipo> equipos = new ArrayList();
+
         equipos.add(new Equipo());
         while (valid) {
             System.out.println("----Quidditch----");
@@ -107,7 +107,7 @@ public class Lab4_MiguelRojasJoseVargas {
                             case 1:
                                 if (equipos.isEmpty()) {
                                     System.out.println("No hay equipos disponibles");
-                                }else{
+                                } else {
                                     System.out.println("Ingrese la posicion del equipo que desea agregarlo: ");
                                     pos_equipo = entrada.nextInt();
                                     System.out.println("Ingrese el nombre del jugador: ");
@@ -183,7 +183,7 @@ public class Lab4_MiguelRojasJoseVargas {
                                 for (int i = 0; i < equipos.size(); i++) {
                                     System.out.println("Jugadores Equipo[" + i + "] = " + equipos.get(i).jugadores);
                                 }
-                                    
+
                                 break;
                             case 5:
                                 valid3 = false;
@@ -191,7 +191,8 @@ public class Lab4_MiguelRojasJoseVargas {
                     }
                     break;
                 case 3:
-                    System.out.println("");
+                    System.out.println("Simulacion");
+                    simulacion();
                     break;
                 case 4:
                     System.out.println("Gracias por jugar!");
@@ -220,20 +221,92 @@ public class Lab4_MiguelRojasJoseVargas {
     }
 
     public static void simulacion() {
+        
+        Random r = new Random();
+        if (equipos.size() < 2) {
+            System.out.println("No hay suficientes equipos para jugar");
+        } else {
+            for (int i = 0; i < equipos.size(); i++) {
+                if (equipos.get(i).jugadores.size() < 7) {
+                    System.out.println("No hay suficientes jugadores en los equipos");
+                    break;
+                }
+            }
+            //Mostrar equipo y Judador a Seleccionar
+            for (int i = 0; i < equipos.size(); i++) {
+                System.out.println("Equipo [" + i + "]" + equipos.get(i).getCasa());
+            }
+            System.out.print("Eliga equipo: ");
+            int pos_team = entrada.nextInt();
+            //
+            for (int i = 0; i < equipos.size(); i++) {
+                System.out.println("Jugadores Equipo[" + i + "] = " + equipos.get(i).jugadores);
+            }
+            System.out.print("Eliga un jugador: ");
+            int jugador = entrada.nextInt();
+            
+            //Eleccion cpu
+            
+            int pos_teamCPU = r.nextInt(4) + 0;
+            while (pos_teamCPU == pos_team) {
+                pos_teamCPU = r.nextInt(4) + 0;
+            }
+            int turno = 1;
+            boolean fin = true;
+            while (fin) {
+                if (turno % 2 != 0) {
+                    //Modo a Jugar
+                    System.out.println("Turno de Humano");
+                    System.out.println("Modo a Jugar");
+                    System.out.println("[1] Modo de Juego");
+                    System.out.println("[2] Trampa");
+                    System.out.print("Eliga que movimiento hara: ");
+                    int move = entrada.nextInt();
+                    switch (move) {
+                        case 1:
+                            System.out.println("Modo Juego");
+                            if (equipos.get(pos_team).jugadores.get(jugador).getRol()  == "Guarida"){
+                                int pos_random = 0 + r.nextInt(7);
+                                int random_cazador = r.nextInt(3) + 0;
+                                
+                                while(equipos.get(pos_teamCPU).jugadores.get(pos_random).getRol() != "Cazador"){
+                                    pos_random = 0 + r.nextInt(7);
+                                }
+                                        
+                                if (equipos.get(pos_team).jugadores.get(jugador).agilidad() > equipos.get(pos_teamCPU).jugadores.get(pos_random).velocidad() ) {
+                                    //Proceso
+                                }
+                                
+                                
+                                
+                            } else if (equipos.get(pos_team).jugadores.get(jugador).getRol()  == "Golpeador") {
+                                
+                            } else if (equipos.get(pos_team).jugadores.get(jugador).getRol()  == "Cazador") {
+                                
+                            } else if (equipos.get(pos_team).jugadores.get(jugador).getRol()  == "Buscador") {
+                                
+                            } else {
+                                //Do nothing
+                            }
+                            
+                            break;
+                        case 2:
+                            System.out.println("Trampa");
+                            
+                            break;
+                        default:
+                            System.out.println("Ingrese una opcion valida");
+                    }
+                    turno++;
+                } else {
+                    System.out.println("Turno de CPU");
 
-        int turno = 1;
-        boolean fin = true;
-        while (fin) {
-            if (turno % 2 != 0) {
-                System.out.println("Turno de Humano");
-                
-                turno++;
-            } else {
-                System.out.println("Turno de CPU");
+                    turno++;
+                }
 
-                turno++;
             }
 
         }
+
     }
 }
