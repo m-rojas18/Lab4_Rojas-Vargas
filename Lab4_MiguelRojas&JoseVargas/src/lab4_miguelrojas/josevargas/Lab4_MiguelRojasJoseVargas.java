@@ -15,12 +15,23 @@ public class Lab4_MiguelRojasJoseVargas {
     public static void main(String[] args) {
         boolean valid = true;
         int pos_equipo = 0;
-        equipos.add(new Equipo());
+        //
+        //equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65));
+        //equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
+        //equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65));
+        //equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
 
-        //equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65));
-        //equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
-        //equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65));
-        //equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
+        
+
+        equipos.add(new Equipo("Gryffindor", 10, 2, 80, 91, 65)); 
+        equipos.add(new Equipo("Slytherin", 5, 9, 70, 65, 99));
+        equipos.add(new Equipo("Ravenclaw", 8, 4, 80, 91, 65));
+        equipos.add(new Equipo("Hufflepuff", 5, 9, 70, 65, 99));
+        //add jugadores al equipo 0
+        equipos.get(0).getJugadores().add(new Jugador("Jose", 3, 43, "Guardian")); equipos.get(0).getJugadores().add(new Jugador("Miguel", 1, 32, "Golpeador")); equipos.get(0).getJugadores().add(new Jugador("Antonio", 2, 2, "Golpeador")); equipos.get(0).getJugadores().add(new Jugador("Emilio", 3, 82, "Cazador")); equipos.get(0).getJugadores().add(new Jugador("Karlo", 7, 20, "Cazador")); equipos.get(0).getJugadores().add(new Jugador("Angel", 5, 77, "Cazador")); equipos.get(0).getJugadores().add(new Jugador("Harry", 4, 99, "Buscador"));
+        //add jugadores al equipo 0
+        equipos.get(0).getJugadores().add(new Jugador("Iker",1, 1, "Guardian")); equipos.get(0).getJugadores().add(new Jugador("Ronaldo", 6, 7, "Golpeador")); equipos.get(0).getJugadores().add(new Jugador("Mauricio", 4, 8, "Golpeador")); equipos.get(0).getJugadores().add(new Jugador("Greg", 3, 47, "Cazador")); equipos.get(0).getJugadores().add(new Jugador("Michael", 3, 21, "Cazador")); equipos.get(0).getJugadores().add(new Jugador("Brock", 2, 33, "Cazador")); equipos.get(0).getJugadores().add(new Jugador("Messi", 10, 10, "Buscador"));
+
         while (valid) {
             System.out.println("----Quidditch----");
             System.out.println("1] CRUD Equipo");
